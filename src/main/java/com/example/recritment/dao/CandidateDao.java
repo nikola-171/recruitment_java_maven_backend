@@ -11,6 +11,13 @@ import javax.transaction.Transactional;
 
 @Repository
 public interface CandidateDao extends JpaRepository<Candidate, Integer> {
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from Candidate where id = :id ", nativeQuery = true)
+    void deleteCandidate(@Param("id") Integer id);
+
+
     @Modifying
     @Transactional
     @Query(value = "Update Candidate c SET c.first_name=:first_name, c.last_name = :last_name," +

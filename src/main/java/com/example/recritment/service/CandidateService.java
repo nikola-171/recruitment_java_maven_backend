@@ -23,7 +23,7 @@ public class CandidateService {
     }
 
     public void deleteCandidate(Integer id){
-        this.candidateDao.deleteById(id);
+        this.candidateDao.deleteCandidate(id);
     }
 
     public void updateCandidate(Candidate candidate){

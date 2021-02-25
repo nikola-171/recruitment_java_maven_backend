@@ -1,13 +1,16 @@
 package com.example.recritment.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Getter
+@Setter
+@Entity
 @Table(name="candidate")
 public class Candidate {
     @Id

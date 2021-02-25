@@ -16,4 +16,8 @@ public class CandidateService {
     public List<Candidate> getAllCandidates(){
         return this.candidateDao.findAll();
     }
+
+    public void saveCandidate(Candidate candidate){
+        this.candidateDao.save(candidate);
+    }
 }

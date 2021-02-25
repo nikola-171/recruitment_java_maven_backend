@@ -3,6 +3,7 @@ package com.example.recritment.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -21,6 +22,11 @@ public class Candidate {
     private String last_name;
     private String email;
     private String phone;
+
+    @OneToMany(targetEntity = Skill.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="candidate", referencedColumnName = "id", nullable = true)
+
+    private List<Skill> skills;
 
     private Integer year_of_birth;
     private Integer month_of_birth;

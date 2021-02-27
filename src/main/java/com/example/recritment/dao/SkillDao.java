@@ -12,6 +12,12 @@ public interface SkillDao extends JpaRepository<Skill, Integer> {
 
     @Transactional
     @Modifying
+    @Query(value = "delete from skill where id = :skillId and candidate = :candidateId",
+           nativeQuery = true)
+    void deleteSkill(Integer candidateId, Integer skillId);
+
+    @Transactional
+    @Modifying
     @Query(value = "insert into skill(name, description, candidate)" +
                    "values(:name, :description, :candidate)", nativeQuery = true)
     void insertSkill(@Param("name") String name, @Param("description") String description,

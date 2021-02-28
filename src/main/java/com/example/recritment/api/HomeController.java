@@ -6,11 +6,9 @@ import com.example.recritment.model.Skill;
 import com.example.recritment.service.CandidateService;
 import com.example.recritment.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @CrossOrigin
@@ -23,18 +21,18 @@ public class HomeController {
     private SkillService skillService;
 
     @GetMapping("/candidates")
-    public List<Candidate> homePage(Model model){
+    public ResponseEntity<List<Candidate>> homePage(){
         /*here we will return the list of all candidates*/
         return this.candidateService.getAllCandidates();
     }
 
     @DeleteMapping("/candidate/{candidateId}/deleteSkill/{skillId}")
-    public void deleteSkill(@PathVariable("candidateId") Integer candidateId, @PathVariable("skillId") Integer skillId){
-        this.skillService.deleteSkill(candidateId, skillId);
+    public ResponseEntity<Void> deleteSkill(@PathVariable("candidateId") Integer candidateId, @PathVariable("skillId") Integer skillId){
+        return this.skillService.deleteSkill(candidateId, skillId);
     }
 
     @GetMapping("/candidates/search")
-    public List<Candidate> search_candidates(@RequestParam(name="first_name", required = false) String first_name,
+    public ResponseEntity<List<Candidate>> search_candidates(@RequestParam(name="first_name", required = false) String first_name,
                                   @RequestParam(name="last_name", required = false) String last_name,
                                   @RequestParam(name="skill", required = false) String skill ){
 
@@ -46,20 +44,21 @@ public class HomeController {
     }
 
     @PutMapping("/candidate/{id}/edit")
-    public void editCandidate(@PathVariable("id") Integer id, @RequestBody Candidate candidate) {
-        this.candidateService.updateCandidate(candidate);
+    public ResponseEntity<Void> editCandidate(@PathVariable("id") Integer id, @RequestBody Candidate candidate) {
+        return this.candidateService.updateCandidate(candidate);
     }
 
     @PostMapping("/candidate/{id}/addSkill")
-    public void addSkill(@PathVariable("id") Integer id, @RequestBody Skill skill){
+    public ResponseEntity<Void> addSkill(@PathVariable("id") Integer id, @RequestBody Skill skill){
         if(skill.getName().equals("") || skill.getDescription().equals("")){
             throw new ApiRequestException("Skill name and description cannot be empty.");
         }
-        this.skillService.addSkill(id, skill.getName(), skill.getDescription());
+
+        return this.skillService.addSkill(id, skill.getName(), skill.getDescription());
     }
 
     @PostMapping("/candidate/addCandidate")
-    public void saveCandidate(@RequestBody Candidate candidate){
+    public ResponseEntity<Void> saveCandidate(@RequestBody Candidate candidate){
         if(candidate.getFirst_name().equals("") || candidate.getLast_name().equals("") ||
            candidate.getEmail().equals("") || candidate.getPhone().equals("")){
             throw new ApiRequestException("Empty fields are not allowed");
@@ -69,12 +68,12 @@ public class HomeController {
             throw new ApiRequestException("Phone number must be a numeric value.");
         }
 
-        this.candidateService.saveCandidate(candidate);
+        return this.candidateService.saveCandidate(candidate);
     }
 
     @DeleteMapping("/candidate/{id}/delete")
-    public void deleteCandidate(@PathVariable("id") Integer id){
-        this.candidateService.deleteCandidate(id);
+    public ResponseEntity<Void> deleteCandidate(@PathVariable("id") Integer id){
+        return this.candidateService.deleteCandidate(id);
     }
 
 }

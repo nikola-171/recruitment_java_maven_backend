@@ -23,7 +23,7 @@ public class Candidate {
     private String email;
     private String phone;
 
-    @OneToMany(targetEntity = Skill.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Skill.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="candidate", referencedColumnName = "id", nullable = true)
 
     private List<Skill> skills;

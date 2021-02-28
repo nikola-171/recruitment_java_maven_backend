@@ -1,4 +1,4 @@
-package com.example.recritment.exception;
+package com.example.recruitment.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

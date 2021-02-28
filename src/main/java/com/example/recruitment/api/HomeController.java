@@ -1,10 +1,10 @@
-package com.example.recritment.api;
+package com.example.recruitment.api;
 
-import com.example.recritment.exception.ApiRequestException;
-import com.example.recritment.model.Candidate;
-import com.example.recritment.model.Skill;
-import com.example.recritment.service.CandidateService;
-import com.example.recritment.service.SkillService;
+import com.example.recruitment.exception.ApiRequestException;
+import com.example.recruitment.model.Candidate;
+import com.example.recruitment.model.Skill;
+import com.example.recruitment.service.CandidateService;
+import com.example.recruitment.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +32,9 @@ public class HomeController {
     }
 
     @GetMapping("/candidates/search")
-    public ResponseEntity<List<Candidate>> search_candidates(@RequestParam(name="first_name", required = false) String first_name,
-                                  @RequestParam(name="last_name", required = false) String last_name,
-                                  @RequestParam(name="skill", required = false) String skill ){
+    public ResponseEntity<List<Candidate>> search_candidates(@RequestParam(name="first_name", value="", required = false) String first_name,
+                                  @RequestParam(name="last_name", value="", required = false) String last_name,
+                                  @RequestParam(name="skill", value="", required = false) String skill ){
 
         if(first_name.equals("") && last_name.equals("") && skill.equals("")){
             throw new ApiRequestException("empty field are not allowed");
@@ -60,7 +60,9 @@ public class HomeController {
     @PostMapping("/candidate/addCandidate")
     public ResponseEntity<Void> saveCandidate(@RequestBody Candidate candidate){
         if(candidate.getFirst_name().equals("") || candidate.getLast_name().equals("") ||
-           candidate.getEmail().equals("") || candidate.getPhone().equals("")){
+           candidate.getEmail().equals("") || candidate.getPhone().equals("") ||
+           candidate.getYear_of_birth().equals(null) || candidate.getMonth_of_birth().equals(null) ||
+           candidate.getDay_of_birth().equals(null)){
             throw new ApiRequestException("Empty fields are not allowed");
         }
 

@@ -1,12 +1,11 @@
-package com.example.recritment.service;
+package com.example.recruitment.service;
 
-import com.example.recritment.dao.SkillDao;
+import com.example.recruitment.dao.SkillDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.HtmlUtils;
 
 
 @Service

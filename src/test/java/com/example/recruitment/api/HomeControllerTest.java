@@ -1,11 +1,9 @@
-package com.example.recritment.api;
+package com.example.recruitment.api;
 
-import com.example.recritment.model.Candidate;
-import com.example.recritment.model.Skill;
+import com.example.recruitment.model.Candidate;
+import com.example.recruitment.model.Skill;
 import org.hibernate.Hibernate;
-import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Test;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -16,7 +14,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class HomeControllerTest {
 
     @Autowired
@@ -67,7 +64,7 @@ class HomeControllerTest {
 
         ResponseEntity<Void> edit = this.homeController.addSkill(response.getBody().get(0).getId(), skill);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.OK, edit.getStatusCode());
 
     }
 

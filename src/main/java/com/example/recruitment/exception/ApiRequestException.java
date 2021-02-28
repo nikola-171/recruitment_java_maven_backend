@@ -1,4 +1,4 @@
-package com.example.recritment.exception;
+package com.example.recruitment.exception;
 
 public class ApiRequestException extends RuntimeException {
 

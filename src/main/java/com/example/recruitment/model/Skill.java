@@ -1,4 +1,4 @@
-package com.example.recritment.model;
+package com.example.recruitment.model;
 
 import lombok.*;
 

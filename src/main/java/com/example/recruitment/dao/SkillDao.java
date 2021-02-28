@@ -1,6 +1,6 @@
-package com.example.recritment.dao;
+package com.example.recruitment.dao;
 
-import com.example.recritment.model.Skill;
+import com.example.recruitment.model.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

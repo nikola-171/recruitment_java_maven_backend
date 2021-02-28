@@ -1,7 +1,5 @@
-package com.example.recritment;
+package com.example.recruitment;
 
-import com.example.recritment.service.CandidateService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -12,16 +10,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class RecritmentApplication {
+public class RecruitmentApplication {
 
 
 	public static void main(String[] args) {
-		SpringApplication.run(RecritmentApplication.class, args);
+		SpringApplication.run(RecruitmentApplication.class, args);
 	}
 
 	@Bean
 	public Docket productApi(){
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.example.recritment.api")).build();
+				.apis(RequestHandlerSelectors.basePackage("com.example.recruitment.api")).build();
 	}
 }

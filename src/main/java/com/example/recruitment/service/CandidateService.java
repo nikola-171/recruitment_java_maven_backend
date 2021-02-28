@@ -1,7 +1,7 @@
-package com.example.recritment.service;
+package com.example.recruitment.service;
 
-import com.example.recritment.dao.CandidateDao;
-import com.example.recritment.model.Candidate;
+import com.example.recruitment.dao.CandidateDao;
+import com.example.recruitment.model.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
